@@ -73,15 +73,16 @@ typedef vector< PII > VPII;
 //         Name:  main
 //  Description:  main function
 // =====================================================================================
-set<int> myset;
+//set<int> myset;
     int
-main ( int argc, char *argv[] )
-{
-	int t;
+main ( int argc, char *argv[] ){
+//	ios_base::sync_with_stdio(false);
+    int t;
     int n,k,p;
     int x,y;
     for(s(t);t;t--){
-        myset.clear();
+        set<int> myset;
+        //myset.clear();
         s(n); s(k); s(p);
         REP(i,k){
            s(x); s(y);
@@ -93,13 +94,14 @@ main ( int argc, char *argv[] )
             s(x); s(y);
             if(myset.find(x) == myset.end()){
                 flag = false;
-                break;
             }
         }
         if(flag){
-            cout<<"Yes\n";
+            printf("Yes\n");
+            //cout<<"Yes\n";
         } else {
-            cout<<"No\n";
+            printf("No\n");
+            //cout<<"No\n";
         }
     }
 
