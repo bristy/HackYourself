@@ -1,0 +1,73 @@
+import java.lang.*;
+import java.util.*;
+
+
+
+public class LruDriver{
+    public static void main(String[] args){
+        LRU<Character, Character> lru = new LRU<Character, Character>();
+        String input = "abcadefab";
+        for(Character c : input.toCharArray()){
+            lru.put(c, c);
+        }
+    }
+    
+}
+
+
+class LRU<Key, Value>{
+    // max slots
+    private int maxSlot  = 4; // default
+
+    private Queue<Key> status;
+    private Map<Key, Value> data;
+    public LRU(){
+        init();
+    }
+
+    public LRU(int maxSlot){
+        this.maxSlot = maxSlot;
+
+        init();
+    }
+
+    // initialze status and data  
+    private void init(){
+        status = new LinkedList<Key>();
+        data = new HashMap<Key, Value>(maxSlot);
+    }
+
+
+    // method to put data in LRU
+
+    public void put(Key key, Value value){
+        System.out.println("Adding new entry : " + value);
+        // check if value is available
+        if(data.containsKey(value)){
+            // remove key from queue
+            status.remove(key);
+        }
+
+        while(status.size() >= maxSlot){
+            // remove stale entries from map and queue
+            Key stale = status.poll();
+            if(null != stale){
+                data.remove(stale);
+                System.out.println("Removing old entry : " + stale);
+            }
+        }
+
+        // make key used recently
+        status.add(key);
+        // update data(if already present) else add new
+        data.put(key, value);
+    }
+
+
+    // method to get data
+    
+    public Value get(Key key){
+        return data.get(key);
+    }
+
+}
