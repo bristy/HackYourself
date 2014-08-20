@@ -1,0 +1,8 @@
+import java.util.*;
+public class Haar1D {
+	public int[] transform(int[] data, int L) {
+		
+	}
+}
+
+// Powered by PopsEdit

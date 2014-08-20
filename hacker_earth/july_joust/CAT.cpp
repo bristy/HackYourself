@@ -1,11 +1,11 @@
 // =====================================================================================
 //
-//       Filename:  MAXLN.cpp
+//       Filename:  CAT.cpp
 //
-//    Description:  http://www.spoj.com/problems/MAXLN/
+//    Description:  http://www.hackerearth.com/july-joust/algorithm/my-girlfriend-and-her-love-for-cats-1/
 //
 //        Version:  1.0
-//        Created:  Monday 28 July 2014 11:49:54  IST
+//        Created:  Saturday 26 July 2014 10:55:30  IST
 //       Revision:  none
 //       Compiler:  g++
 //
@@ -75,15 +75,26 @@ typedef vector< PII > VPII;
 	int
 main ( int argc, char *argv[] ){
     int n;
-    double r;
     cin>>n;
-    int t = 0;
-    while(n--){
-        t++;
-        cin>>r;
-        r =  (4*r*r + 0.25);
-        printf("Case %d: %.2f\n",t, r);
+    VLL s,c;
+    LL temp;
+    LL ret = 0;
+    REP(i,n){
+        sl(temp);
+        s.pb(temp);
     }
+   
+    REP(i,n){
+        sl(temp);
+        c.pb(temp);
+    }
+
+    sort(s.begin(), s.end());
+    sort(c.begin(), c.end());
+    REP(i,n){
+        ret += (s[i]*c[i]);
+    }
+    cout<<ret;
 	return EXIT_SUCCESS;
 }		// ----------  end of function main  ---------- 
 

@@ -1,0 +1,8 @@
+import java.util.*;
+public class PalindromeMatrixDiv2 {
+	public int minChange(String[] A, int rowCount, int columnCount) {
+		
+	}
+}
+
+// Powered by PopsEdit

@@ -1,11 +1,11 @@
 // =====================================================================================
 //
-//       Filename:  MAXLN.cpp
+//       Filename:  BigP.cpp
 //
-//    Description:  http://www.spoj.com/problems/MAXLN/
+//    Description:  http://www.hackerearth.com/lendingkart-hiring-challenge/algorithm/big-p-and-party-1/
 //
 //        Version:  1.0
-//        Created:  Monday 28 July 2014 11:49:54  IST
+//        Created:  Saturday 02 August 2014 02:30:25  IST
 //       Revision:  none
 //       Compiler:  g++
 //
@@ -68,22 +68,63 @@ typedef pair<int, int > PII;
 typedef vector< PII > VPII;
 /*Main Code*/
 #define EXIT_SUCCESS 0
+VVI graph;
+void solve(){
+    int A, B;
+    cin>>A>>B;
+    graph.resize(A);
+
+    REP(i, B){
+        int x,y;
+        cin>>x>>y;
+        graph[x].pb(y);
+        graph[y].pb(x);
+    }
+
+    int dist[A];
+    int visited[A];
+    REP(i,A){
+        visited[i] = 0;
+        dist[i] = INF;
+    }
+    //fill(visited, 0);
+    //fill(dist, INF); 
+    queue<int> q;
+    q.push(0);
+    dist[0] = 0;
+    while(!q.empty()){
+        
+        int curr = q.front();
+        q.pop();
+        if(!visited[curr]){
+            // mark v as visited
+            visited[curr] = 1;
+            for(VI :: iterator c = graph[curr].begin(); c != graph[curr].end(); c++){
+                int v = *c;
+                int cost = dist[curr]+1;
+                //cout<<"At "<<v<< "  dist  "<< dist[v]<<endl;
+                //cout<<"  visited v "<<visited[v]<<endl;
+                if(!visited[v] && cost < dist[v]){
+                    dist[v] = cost;
+                    q.push(v);
+                }
+            }
+        }
+    }
+
+    FOR(i, 1, A){
+        printf("%d\n", dist[i]);
+    }
+
+}
+
 // ===  FUNCTION  ======================================================================
 //         Name:  main
 //  Description:  main function
 // =====================================================================================
 	int
 main ( int argc, char *argv[] ){
-    int n;
-    double r;
-    cin>>n;
-    int t = 0;
-    while(n--){
-        t++;
-        cin>>r;
-        r =  (4*r*r + 0.25);
-        printf("Case %d: %.2f\n",t, r);
-    }
+    solve();
 	return EXIT_SUCCESS;
 }		// ----------  end of function main  ---------- 
 

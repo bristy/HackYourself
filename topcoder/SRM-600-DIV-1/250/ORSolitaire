@@ -1,0 +1,10 @@
+#include <string>
+#include <vector>
+class ORSolitaire {
+	public:
+	int getMinimum(vector <int> numbers, int goal) {
+		
+	}
+};
+
+// Powered by PopsEdit

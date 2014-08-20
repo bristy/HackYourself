@@ -1,19 +1,3 @@
-// =====================================================================================
-//
-//       Filename:  MAXLN.cpp
-//
-//    Description:  http://www.spoj.com/problems/MAXLN/
-//
-//        Version:  1.0
-//        Created:  Monday 28 July 2014 11:49:54  IST
-//       Revision:  none
-//       Compiler:  g++
-//
-//         Author:  Brajesh Kumar (), kbrajesh176@gmail.com
-//   Organization:  
-//
-// =====================================================================================
-
 
 //Data Structure includes
 #include<vector>
@@ -67,23 +51,33 @@ typedef vector<long long > VLL;
 typedef pair<int, int > PII;
 typedef vector< PII > VPII;
 /*Main Code*/
-#define EXIT_SUCCESS 0
-// ===  FUNCTION  ======================================================================
-//         Name:  main
-//  Description:  main function
-// =====================================================================================
-	int
-main ( int argc, char *argv[] ){
-    int n;
-    double r;
-    cin>>n;
-    int t = 0;
-    while(n--){
-        t++;
-        cin>>r;
-        r =  (4*r*r + 0.25);
-        printf("Case %d: %.2f\n",t, r);
-    }
-	return EXIT_SUCCESS;
-}		// ----------  end of function main  ---------- 
+class Haar1D{
+    public:
+        vector <int> transform(vector <int> data, int L){
+            int size = sz(data);
+            levelTransform(data, size, L);
+            
+            return data;
+        }
 
+        void levelTransform(VI &data, int size, int L){
+            if(L <1){
+                return;
+            }
+            int transformed[size];
+            int sumIndex = 0;
+            int diffIndex = size/2;
+            for(int i = 0; i<size; i+=2){
+                int a = data[i];
+                int b = data[i+1];
+                transformed[sumIndex++] = a+b;
+                transformed[diffIndex++] = a-b;
+            }
+
+            REP(i, size){
+                data[i] = transformed[i];
+            }
+
+            levelTransform(data, size/2, L-1);
+        }   
+};

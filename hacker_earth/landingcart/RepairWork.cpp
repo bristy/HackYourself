@@ -1,11 +1,11 @@
 // =====================================================================================
 //
-//       Filename:  MAXLN.cpp
+//       Filename:  RepairWork.cpp
 //
-//    Description:  http://www.spoj.com/problems/MAXLN/
+//    Description:  http://www.hackerearth.com/lendingkart-hiring-challenge/algorithm/repair-work-1/
 //
 //        Version:  1.0
-//        Created:  Monday 28 July 2014 11:49:54  IST
+//        Created:  Saturday 02 August 2014 03:20:41  IST
 //       Revision:  none
 //       Compiler:  g++
 //
@@ -68,22 +68,60 @@ typedef pair<int, int > PII;
 typedef vector< PII > VPII;
 /*Main Code*/
 #define EXIT_SUCCESS 0
+#define MAX 5001
+double dp[MAX][MAX];
+
+double dist(int x, int y, VI &pos){
+   return sqrt(pos[y]-pos[x]+1);  
+}
+double findMin(int x, int y, VI &pos){
+    if(x == y){
+        return 1;
+    }
+    if(dp[x][y] != INF){
+        return dp[x][y];
+    }
+
+    for(int i = x; i<=y; i++){
+        double cost = min(dist(x, y, pos), dist(x, i, pos) +  dist(i+1, y, pos));
+        if(dp[x][y]> cost){
+            dp[x][y] = cost; 
+        }
+    }
+
+    return dp[x][y];
+}
+
+
+void solve(){
+    int n;
+    string str;
+    s(n);
+    cin>>str;
+    VI pos;
+    REP(i, n){
+        if(str[i] == '0'){
+            pos.pb(i);
+        }
+    }
+
+    int len = sz(pos);
+    REP(i, len){
+        REP(j, len){
+            dp[i][j] = INF;
+        }
+    }
+
+    printf("%.4f", findMin(0, sz(pos)-1, pos));
+
+}
 // ===  FUNCTION  ======================================================================
 //         Name:  main
 //  Description:  main function
 // =====================================================================================
 	int
 main ( int argc, char *argv[] ){
-    int n;
-    double r;
-    cin>>n;
-    int t = 0;
-    while(n--){
-        t++;
-        cin>>r;
-        r =  (4*r*r + 0.25);
-        printf("Case %d: %.2f\n",t, r);
-    }
+    solve();
 	return EXIT_SUCCESS;
 }		// ----------  end of function main  ---------- 
 

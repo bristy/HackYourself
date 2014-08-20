@@ -1,0 +1,8 @@
+import java.util.*;
+public class NegativeGraphDiv1 {
+	public long findMin(int N, int[] from, int[] to, int[] weight, int charges) {
+		
+	}
+}
+
+// Powered by PopsEdit

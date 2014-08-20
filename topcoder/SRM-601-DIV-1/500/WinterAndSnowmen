@@ -1,0 +1,8 @@
+import java.util.*;
+public class WinterAndSnowmen {
+	public int getNumber(int N, int M) {
+		
+	}
+}
+
+// Powered by PopsEdit

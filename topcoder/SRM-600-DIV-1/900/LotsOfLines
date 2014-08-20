@@ -1,0 +1,8 @@
+import java.util.*;
+public class LotsOfLines {
+	public long countDivisions(int A, int B) {
+		
+	}
+}
+
+// Powered by PopsEdit

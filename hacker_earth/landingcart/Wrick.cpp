@@ -1,11 +1,11 @@
 // =====================================================================================
 //
-//       Filename:  MAXLN.cpp
+//       Filename:  Wrick.cpp
 //
-//    Description:  http://www.spoj.com/problems/MAXLN/
+//    Description:  http://www.hackerearth.com/lendingkart-hiring-challenge/algorithm/will-rick-survive-or-not-2/
 //
 //        Version:  1.0
-//        Created:  Monday 28 July 2014 11:49:54  IST
+//        Created:  Saturday 02 August 2014 03:27:59  IST
 //       Revision:  none
 //       Compiler:  g++
 //
@@ -68,21 +68,47 @@ typedef pair<int, int > PII;
 typedef vector< PII > VPII;
 /*Main Code*/
 #define EXIT_SUCCESS 0
+#define MAX 100010
+int dist[MAX];
+void solve(){
+    int n;
+    s(n);
+    REP(i, n){
+        s(dist[i]);
+    }
+
+    sort(dist, dist+n);
+
+    int round = 0;
+    int died = 0;
+    REP(i, n){
+        if(dist[i]-i-round > 0){
+            died++;
+        } else {
+            break;
+        }
+        if(i%6 == 5){
+            round++;
+        }
+    }
+
+    if(died == n){
+        printf("Rick now go and save Carl and Judas\n");
+    } else {
+        printf("%s\n%d\n", "Goodbye Rick", died);
+    }
+}
+
 // ===  FUNCTION  ======================================================================
 //         Name:  main
 //  Description:  main function
 // =====================================================================================
 	int
 main ( int argc, char *argv[] ){
-    int n;
-    double r;
-    cin>>n;
-    int t = 0;
-    while(n--){
-        t++;
-        cin>>r;
-        r =  (4*r*r + 0.25);
-        printf("Case %d: %.2f\n",t, r);
+    int t;
+    s(t);
+    while(t--){
+        solve();
     }
 	return EXIT_SUCCESS;
 }		// ----------  end of function main  ---------- 

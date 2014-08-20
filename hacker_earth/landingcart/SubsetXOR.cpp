@@ -1,11 +1,11 @@
 // =====================================================================================
 //
-//       Filename:  MAXLN.cpp
+//       Filename:  SubsetXOR.cpp
 //
-//    Description:  http://www.spoj.com/problems/MAXLN/
+//    Description:  http://www.hackerearth.com/lendingkart-hiring-challenge/algorithm/subset-xor-4/
 //
 //        Version:  1.0
-//        Created:  Monday 28 July 2014 11:49:54  IST
+//        Created:  Saturday 02 August 2014 03:04:55  IST
 //       Revision:  none
 //       Compiler:  g++
 //
@@ -68,22 +68,34 @@ typedef pair<int, int > PII;
 typedef vector< PII > VPII;
 /*Main Code*/
 #define EXIT_SUCCESS 0
+#define MAX 101
+int A[MAX];
+
+void solve(){
+    int t;
+    s(t);
+    while(t--){
+        int n;
+        s(n);
+        REP(i,n){
+            s(A[i]);
+        }
+
+        if(n == 1){
+            cout<<A[0]<<endl;
+        } else {
+            cout<<"0\n";
+        }
+    }
+}
+
 // ===  FUNCTION  ======================================================================
 //         Name:  main
 //  Description:  main function
 // =====================================================================================
 	int
 main ( int argc, char *argv[] ){
-    int n;
-    double r;
-    cin>>n;
-    int t = 0;
-    while(n--){
-        t++;
-        cin>>r;
-        r =  (4*r*r + 0.25);
-        printf("Case %d: %.2f\n",t, r);
-    }
+    solve();
 	return EXIT_SUCCESS;
 }		// ----------  end of function main  ---------- 
 
