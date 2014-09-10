@@ -1,0 +1,212 @@
+// =====================================================================================
+//
+//       Filename:  uva10092.cpp
+//
+//    Description:  http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=24&page=show_problem&problem=1033
+//
+//        Version:  1.0
+//        Created:  Sunday 07 September 2014 10:37:17  IST
+//       Revision:  none
+//       Compiler:  g++
+//
+//         Author:  Brajesh Kumar (), kbrajesh176@gmail.com
+//   Organization:  
+//
+// =====================================================================================
+
+
+//Data Structure includes
+#include<vector>
+#include<stack>
+#include<set>
+#include<bitset>
+#include<map>
+#include<queue>
+#include<deque>
+#include<string>
+
+
+//Other Includes
+#include<iostream>
+#include<fstream>
+#include<algorithm>
+#include<cstring>
+#include<cassert>
+#include<cstdlib>
+#include<cstdio>
+#include<cmath>
+
+using namespace std;
+
+#define FOR(i,a,b) for(int i=a;i<b;i++)
+#define REP(i,n) FOR(i,0,n)
+#define pb push_back
+#define mp make_pair
+#define s(n) scanf("%d",&n)
+#define sl(n) scanf("%lld",&n)
+#define sf(n) scanf("%lf",&n)
+#define ss(n) scanf("%s",n)
+#define fill(a,v) memset(a, v, sizeof a)
+#define sz(a) int((a).size())
+#define INF (int)1e9
+#define EPS 1e-9
+#define bitcount __builtin_popcount
+#define all(c) (c).begin(), (c).end()
+#define maX(a,b) (a>b?a:b)
+#define miN(a,b) (a<b?a:b)
+#define DREP(a) sort(all(a)); a.erase(unique(all(a)),a.end())
+#define INDEX(arr,ind) lower_bound(all(arr),ind)-arr.begin()
+#define tr(c,i) for(typeof((c).begin()) i = (c).begin(); i != (c).end(); i++)
+#define present(c,x) ((c).find(x) != (c).end())
+#define cpresent(c,x) (find(all(c),x) != (c).end())
+
+typedef vector<int> VI;
+typedef vector<vector<int> > VVI;
+typedef long long LL;
+typedef vector<long long > VLL;
+typedef pair<int, int > PII;
+typedef vector< PII > VPII;
+/*Main Code*/
+#define EXIT_SUCCESS 0
+// ===  FUNCTION  ======================================================================
+//         Name:  main
+//  Description:  main function
+// =====================================================================================
+#define MAX_V 1030
+int n, k;
+int tt;
+int res[MAX_V][MAX_V];
+VI adjList[MAX_V];
+int mf, f, start, target;
+VI tree;
+
+void augment(int current, int minEdge){
+    int p = tree[current];
+    if(current == start){
+        f = minEdge;
+        return;
+    } else if(-1 != p){
+        augment(p, min(minEdge, res[p][current]));
+        res[p][current] -= f;
+        res[current][p] += f;
+    }
+}
+
+int edmondKarp(){
+    int mf = 0;
+    while(true){
+        f = 0;
+        queue<int> queue;
+        VI dist(MAX_V, INF);
+        tree.clear();
+        tree.assign(MAX_V, -1);
+
+        // bfs for finding path in residual graph
+        queue.push(start);
+        dist[start] = 0;
+        while(!queue.empty()){
+            int u = queue.front();
+            queue.pop();
+            if(u == target){
+                break;
+            }
+
+            tr(adjList[u], it){
+                int v = *it;
+                if(INF == dist[v] && res[u][v] > 0){
+                    dist[v] = dist[u] + 1;
+                    queue.push(v);
+                    tree[v] = u;
+                }
+            }
+
+        }
+
+        augment(target, INF);
+        if(f == 0){
+            break;
+        }
+
+        mf += f;
+
+    }
+    return mf;
+}
+
+void solve(){
+    REP(i, MAX_V){
+        REP(j, MAX_V){
+            res[i][j] = 0;
+        }
+        adjList[i].clear();
+    }
+
+    start = 0;
+    target = n + k + 1;
+
+    tt = 0;
+    FOR(i, 1, k + 1){
+        s(res[0][i]);
+        tt += res[0][i];
+        adjList[0].pb(i);
+    }
+
+    FOR(i, k + 1, n + k + 1){
+        res[i][target] = 1;
+        adjList[i].pb(target);
+    }
+
+    int z, cat;
+    REP(i, n){
+        s(z);
+        REP(j, z){
+            s(cat);
+            res[cat][i + k + 1] = 1;
+            adjList[cat].pb(i + k + 1);
+        }
+    }
+
+    // display graph
+    /*
+    REP(i, MAX_V){
+        REP(j, MAX_V){
+            if(res[i][j]>0){
+                printf("%d %d %d\n", i, j, res[i][j]);
+            }
+        }
+    }*/
+    int flow = edmondKarp();
+    //printf("flow %d\n", flow);
+    if(flow == tt){
+        printf("1\n");
+        FOR(i, 1, k + 1){
+            int blank = 0;
+            FOR(j, k +1, k + n + 1){
+                if(res[j][i] > 0){
+                    if(blank){
+                        printf(" ");
+                    }
+                    blank = 1;
+                    printf("%d", j - k);
+                }
+            }
+            printf("\n");
+        }
+    } else {
+        printf("0\n");
+    }
+}
+
+int
+main ( int argc, char *argv[] ){
+    while(true){
+        s(k);
+        s(n);
+        if(!k && !n){
+            break;
+        }
+        solve();
+    }
+	return EXIT_SUCCESS;
+}		// ----------  end of function main  ---------- 
+
