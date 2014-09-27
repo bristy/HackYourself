@@ -76,8 +76,8 @@ typedef vector< PII > VPII;
 #define MAX_N 100010
 
 #define MOD 1000000007
-int A[MAX_N];
-int C[MAX_K];
+LL A[MAX_N];
+LL C[MAX_K];
 int
 main ( int argc, char *argv[] ){
     int t;
@@ -87,7 +87,7 @@ main ( int argc, char *argv[] ){
         int n;
         s(n);
         REP(i, n){
-            s(A[i]);
+            sl(A[i]);
             C[A[i]]++;
         }
 
