@@ -1,0 +1,48 @@
+import static java.lang.Math.*;
+import static java.math.BigInteger.*;
+import static java.util.Arrays.*;
+import static java.util.Collections.*;
+import java.math.*;
+import java.util.*;
+
+public class FoxPlayingGame{
+	
+    final int MAX = 60;
+    double dp[][] = new double[MAX][MAX];
+    double scoreA;
+    double scoreB;
+    double solve(int nA, int nB){
+        if(nA <= 0 || nB <= 0){
+            return 0;
+        }
+
+    
+        double ret = dp[nA][nB];
+        if(ret != -1){
+            return ret;
+        }
+
+        // use move A
+        double currScoreA = scoreA + solve(nA - 1, nB);
+        // use move B
+        double currScoreB = scoreB * solve(nA, nB - 1);
+        ret = Math.max(currScoreA, currScoreB);
+        dp[nA][nB] = ret;
+        return ret;
+    }
+    public double theMax(int nA, int nB, int paramA, int paramB){
+	    for(int i = 0; i < MAX; i++){
+            for(int j = 0; j < MAX; j++){
+                dp[i][j] = -1;
+            }
+        }
+        scoreA = paramA / 1000.0;
+        scoreB = paramB / 1000.0;
+        return solve(nA, nB);
+    }
+}
+
+// Edited by VimCoder 0.3.5
+// http://github.com/chazmcgarvey/vimcoder
+
+// Powered by PopsEdit

@@ -1,0 +1,8 @@
+import java.util.*;
+public class Algrid {
+	public String[] makeProgram(String[] output) {
+		
+	}
+}
+
+// Powered by PopsEdit

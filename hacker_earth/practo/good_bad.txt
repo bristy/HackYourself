@@ -1,0 +1,32 @@
+Chandan, our problem moderator, recently got a digital clock as a birthday present. A digital clock shows time in the format HH:MM:SS, where HH, MM, SS reprsents hours , minutes, and seconds respectively. It is a 24 hour clock and so the day starts at 00:00:00 hours while it ends at 23:59:59.
+
+We all know how punctual and particular Chandan is about each and every second of his life. One sunny day, at his leisure, when he was fiddling with his clock, he discovered that a second was good for him if none of the HH, MM and SS at that second was divisible by the same prime number, i.e. it is bad if all of them give 0 as a remainder when divided by the same prime number.
+
+Given a time of a day, Chandan now wants to count the number of good times and bad times from that instance till the end of the day (23:59:59).
+
+Input & Output:
+
+The first line of the input contains the number of test cases T. T test cases follow and each test contains a line HH MM SS, the time from which he wants to count till the end of that day.
+
+For each test case, output a ratio in the format "B:G" (quotes for clarity), where G is the the number of good seconds and B is the number of bad seconds for Chandan. Express the ratio B : G in its lowest terms, i.e. it should not have any common factor.
+
+Constraints
+1 ≤ T ≤ 105
+00 ≤ HH < 24
+00 ≤ MM < 60
+00 ≤ SS < 60
+Sample Input (Plaintext Link)
+2
+23 59 58
+23 46 22
+Sample Output (Plaintext Link)
+0:2
+1:408
+Explanation
+1) In the first case, there 23:59:59 is good because there is no prime number that leaves a remainder 0 when it divides all of them. Similarly 23:59:58 is also good. Hence the answer is 0:2
+
+2) In the second case, there are two bad numbers, 23:46:23 (leaves remainder 0 when divided by 23) and 23:46:46. There are 816 good numbers. Hence the answer is 2:816 => 1:408
+Time Limit: 1 sec(s) for each input file.
+Memory Limit: 256 MB
+Source Limit: 1024 KB
+Scoring: Score is assigned in case any testcase passes.

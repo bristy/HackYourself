@@ -1,0 +1,8 @@
+import java.util.*;
+public class Egalitarianism3Easy {
+	public int maxCities(int n, int[] a, int[] b, int[] len) {
+		
+	}
+}
+
+// Powered by PopsEdit

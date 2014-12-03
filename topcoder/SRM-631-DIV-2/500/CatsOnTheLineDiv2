@@ -1,0 +1,8 @@
+import java.util.*;
+public class CatsOnTheLineDiv2 {
+	public String getAnswer(int[] position, int[] count, int time) {
+		
+	}
+}
+
+// Powered by PopsEdit

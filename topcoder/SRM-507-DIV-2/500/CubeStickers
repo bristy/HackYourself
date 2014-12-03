@@ -1,0 +1,8 @@
+import java.util.*;
+public class CubeStickers {
+	public String isPossible(String[] sticker) {
+		
+	}
+}
+
+// Powered by PopsEdit

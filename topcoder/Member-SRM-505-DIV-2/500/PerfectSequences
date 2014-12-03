@@ -1,0 +1,8 @@
+import java.util.*;
+public class PerfectSequences {
+	public String fixIt(int[] seq) {
+		
+	}
+}
+
+// Powered by PopsEdit

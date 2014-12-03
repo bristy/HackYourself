@@ -1,0 +1,8 @@
+import java.util.*;
+public class TheCowDivTwo {
+	public int find(int N, int K) {
+		
+	}
+}
+
+// Powered by PopsEdit

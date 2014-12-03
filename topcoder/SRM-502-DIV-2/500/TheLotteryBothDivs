@@ -1,0 +1,8 @@
+import java.util.*;
+public class TheLotteryBothDivs {
+	public double find(String[] goodSuffixes) {
+		
+	}
+}
+
+// Powered by PopsEdit

@@ -1,0 +1,8 @@
+import java.util.*;
+public class PotentialGeometricSequence {
+	public int numberOfSubsequences(int[] d) {
+		
+	}
+}
+
+// Powered by PopsEdit

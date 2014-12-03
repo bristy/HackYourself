@@ -1,0 +1,18 @@
+{"WWWWWWW", "WWWWWWB", "BBBBBBB" }
+{"WWWWWWW",
+ "WWWWWWB",
+ "BBBBBWW"}
+{"BBBBB", "WWBWB" }
+{"BBBBB",
+ "WBWBW"}
+{ }
+{"BBBB",
+ "BBBB",
+ "BBWB",
+ "WWBB",
+ "BWBB"}
+{"WWBBBBW", "BBBBBWB", "BBBBBBB", "BBBWBBB" }
+{"WWBBBBW",
+ "BWBBWBB",
+ "BWBBWBW",
+ "BWWBWBB"}

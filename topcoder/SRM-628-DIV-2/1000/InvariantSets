@@ -1,0 +1,8 @@
+import java.util.*;
+public class InvariantSets {
+	public long countSets(int[] f) {
+		
+	}
+}
+
+// Powered by PopsEdit

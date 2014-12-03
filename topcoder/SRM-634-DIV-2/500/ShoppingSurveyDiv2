@@ -1,0 +1,8 @@
+import java.util.*;
+public class ShoppingSurveyDiv2 {
+	public int minValue(int N, int[] s) {
+		
+	}
+}
+
+// Powered by PopsEdit
