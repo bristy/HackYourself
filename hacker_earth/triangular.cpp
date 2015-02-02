@@ -56,7 +56,7 @@ long long count(long long b){
 	return ret;
 }
 	int
-main ( int argc, char *argv[] ){
+main (){
 
 	int q;
 	cin>>q;
