@@ -1,11 +1,11 @@
 // =====================================================================================
 //
-//       Filename:  tangdiv.cpp
+//       Filename:  TANGDIV.cpp
 //
-//    Description:  http://www.codechef.com/APRIL14/problems/TANGDIV
+//    Description:  http://www.codechef.com/problems/TANGDIV
 //
 //        Version:  1.0
-//        Created:  Thursday 10 April 2014 10:30:55  IST
+//        Created:  Wednesday 16 April 2014 01:22:20  IST
 //       Revision:  none
 //       Compiler:  g++
 //
@@ -15,78 +15,96 @@
 // =====================================================================================
 
 
-#include	<cstdlib>
-#include    <iostream>
-#include    <cstdio>
+
+//Data Structure includes
+#include<vector>
+#include<stack>
+#include<set>
+#include<bitset>
+#include<map>
+#include<queue>
+#include<deque>
+#include<string>
+
+
+//Other Includes
+#include<iostream>
+#include<fstream>
+#include<algorithm>
+#include<cstring>
+#include<cassert>
+#include<cstdlib>
+#include<cstdio>
+#include<cmath>
+
 using namespace std;
 
+#define FOR(i,a,b) for(int i=a;i<b;i++)
+#define REP(i,n) FOR(i,0,n)
+#define pb push_back
+#define mp make_pair
+#define s(n) scanf("%d",&n)
+#define sl(n) scanf("%lld",&n)
+#define sf(n) scanf("%lf",&n)
+#define ss(n) scanf("%s",n)
+#define fill(a,v) memset(a, v, sizeof a)
+#define sz(a) int((a).size())
+#define INF (int)1e9
+#define EPS 1e-9
+#define bitcount __builtin_popcount
+#define all(c) (c).begin(), (c).end()
+#define maX(a,b) (a>b?a:b)
+#define miN(a,b) (a<b?a:b)
+#define DREP(a) sort(all(a)); a.erase(unique(all(a)),a.end())
+#define INDEX(arr,ind) lower_bound(all(arr),ind)-arr.begin()
+#define tr(c,i) for(typeof((c).begin()) i = (c).begin(); i != (c).end(); i++)
+#define present(c,x) ((c).find(x) != (c).end())
+#define cpresent(c,x) (find(all(c),x) != (c).end())
+
+typedef vector<int> VI;
+typedef vector<vector<int> > VVI;
+typedef long long LL;
+typedef vector<long long > VLL;
+typedef pair<int, int > PII;
+typedef vector< PII > VPII;
+/*Main Code*/
 #define EXIT_SUCCESS 0
-#define MAX 510
-typedef pair<int, int> PII;
-
-PII chef[MAX], boy[MAX];
-// ===  FUNCTION  ======================================================================
-//         Name:  isIn
-//  Description:  
-// =====================================================================================
-    bool
-isIn (PII a, PII b, int n )
-{
-    int p,q,r,s;
-    p = a.first;
-    q = a.second;
-    r = b.first ;
-    s = b.second;
-    if(p>q){
-        q = q+n;
-    }
-    if(r>s){
-        s = s+n;
-    }
-
-
-    return (p>=r && q<=s);
-}		// -----  end of function isIn  -----
 // ===  FUNCTION  ======================================================================
 //         Name:  main
-//  Description:  
+//  Description:  main function
 // =====================================================================================
+//set<int> myset;
     int
-main ( int argc, char *argv[] )
-{
+main ( int argc, char *argv[] ){
+//	ios_base::sync_with_stdio(false);
     int t;
-    scanf("%d",&t);
-    int n, k, p;
-    while(t--){
-        scanf("%d%d%d", &n,&k,&p);
-        int aa, bb;
-        for(int i = 0; i<k;i++){
-            scanf("%d%d", &aa, &bb);
-            chef[i] = make_pair(aa-1, bb-1);
-        }
-        for(int i =0; i<p; i++){
-            scanf("%d%d", &aa, &bb);
-            boy[i] = make_pair(aa-1, bb-1); 
+    int n,k,p;
+    int x,y;
+    for(s(t);t;t--){
+        set<int> myset;
+        //myset.clear();
+        s(n); s(k); s(p);
+        REP(i,k){
+           s(x); s(y);
+           myset.insert(x);
         }
 
-        bool ret = true;
-        for(int i =0; i<k&&ret; i++){
-            int ok = false;
-            for(int j = 0; j<p; j++){
-                if(isIn(chef[i], boy[j], n)){
-                    ok = true;
-                }
-            }
-            if(!ok){
-                ret = false;
+        int flag = true;
+        REP(i,p){
+            s(x); s(y);
+            if(myset.find(x) == myset.end()){
+                flag = false;
             }
         }
-
-        if(ret){
+        if(flag){
             printf("Yes\n");
+            //cout<<"Yes\n";
         } else {
             printf("No\n");
+            //cout<<"No\n";
         }
     }
-    return EXIT_SUCCESS;
-}				// ----------  end of function main  ----------
+
+	return EXIT_SUCCESS;
+}		// ----------  end of function main  ---------- 
+
