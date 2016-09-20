@@ -1,5 +1,7 @@
 package TreeAlgos;
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 /**
@@ -7,7 +9,7 @@ import java.util.Stack;
  */
 public class TreeTraversal {
     // VLR
-    public static <T> void preOrderRecursion(TreeNode<T> root) {
+    public static <T extends Comparable<T>> void preOrderRecursion(TreeNode<T> root) {
         if (root != null) {
             // process root
             System.out.println(root.getVal());
@@ -19,11 +21,12 @@ public class TreeTraversal {
     }
 
 
-    public static <T> void preOrderNonRecursion(TreeNode<T> root) {
+    public static <T extends Comparable<T>>  void preOrderNonRecursion(TreeNode<T> root) {
         if (root == null) {
             return;
         }
-        Stack<TreeNode<T>> stack = new Stack<TreeNode<T>>();
+        Stack<TreeNode<T>> stack = new Stack<>();
+
         while (true) {
             while (root != null) {
                 // process root
@@ -41,7 +44,7 @@ public class TreeTraversal {
 
     }
 
-    public static <T> void inOrderRecursion(TreeNode<T> root) {
+    public static <T extends Comparable<T>> void inOrderRecursion(TreeNode<T> root) {
         if(root != null) {
             // explore left subtree
             inOrderRecursion(root.getLeft());
@@ -52,7 +55,7 @@ public class TreeTraversal {
         }
     }
 
-    public static <T> void inOrderNonRecursion(TreeNode<T> root) {
+    public static <T extends Comparable<T>> void inOrderNonRecursion(TreeNode<T> root) {
         if (root == null) {
             return;
         }
@@ -72,7 +75,7 @@ public class TreeTraversal {
         }
     }
 
-    public static <T> void postOrderRecursion(TreeNode<T> root) {
+    public static <T extends Comparable<T>> void postOrderRecursion(TreeNode<T> root) {
         if (root != null) {
             // explore left
             postOrderRecursion(root.getLeft());
@@ -83,7 +86,7 @@ public class TreeTraversal {
         }
     }
 
-    public static <T> void postOrderNonRecursion(TreeNode<T> root) {
+    public static <T extends Comparable<T>>  void postOrderNonRecursion(TreeNode<T> root) {
         if (root == null) {
             return;
         }
@@ -120,10 +123,29 @@ public class TreeTraversal {
     }
 
 
+    public static <T extends Comparable<T>> void levelOrderTraversal(TreeNode<T> root) {
+        if (root == null) {
+            return;
+        }
+        Queue<TreeNode<T>> queue = new LinkedList<>();
+        queue.add(root);
+
+        while (!queue.isEmpty()) {
+            root = queue.poll();
+            System.out.println(root.getVal());
+            if (root.getLeft() != null) {
+                queue.add(root.getLeft());
+            }
+            if (root.getRight() != null) {
+                queue.add(root.getRight());
+            }
+        }
+    }
+
     // stub to test
     public static void main(String[] args) {
 
-        IntegerTreeNode root = Mock.getIntegerBinaryTree();
+        TreeNode<Integer> root = Mock.getIntegerBinaryTree();
         System.out.println("preOrderRecursion >>>>>");
         preOrderRecursion(root);
 
@@ -141,5 +163,8 @@ public class TreeTraversal {
 
         System.out.println("postOrderNonRecursion >>>>>");
         postOrderNonRecursion(root);
+
+        System.out.println("levelOrderTraversal >>>>>");
+        levelOrderTraversal(root);
     }
 }

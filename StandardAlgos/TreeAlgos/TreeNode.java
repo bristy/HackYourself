@@ -1,6 +1,6 @@
 package TreeAlgos;
 
-public class TreeNode<T> {
+public class TreeNode<T extends Comparable<T>> implements Comparable<T> {
     private T val;
     private TreeNode left;
     private TreeNode right;
@@ -23,21 +23,25 @@ public class TreeNode<T> {
         this.val = val;
     }
 
-    public TreeNode getLeft() {
+    public TreeNode<T> getLeft() {
         return left;
     }
 
-    public void setLeft(TreeNode left) {
+    public void setLeft(TreeNode<T> left) {
         this.left = left;
     }
 
-    public TreeNode getRight() {
+    public TreeNode<T> getRight() {
         return right;
     }
 
-    public void setRight(TreeNode right) {
+    public void setRight(TreeNode<T> right) {
         this.right = right;
     }
 
+    @Override
+    public int compareTo(T o) {
+        return this.compareTo(o);
+    }
 }
 
