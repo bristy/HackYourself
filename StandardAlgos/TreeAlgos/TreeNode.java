@@ -43,5 +43,10 @@ public class TreeNode<T extends Comparable<T>> implements Comparable<T> {
     public int compareTo(T o) {
         return this.compareTo(o);
     }
+
+    @Override
+    public String toString() {
+        return String.format("Val = %d" , val);
+    }
 }
 

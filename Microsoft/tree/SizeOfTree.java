@@ -1,7 +1,6 @@
 package tree;
 
-import TreeAlgos.IntegerTreeNode;
-import TreeAlgos.Mock;
+import mock.Mock;
 import TreeAlgos.TreeNode;
 
 /**
